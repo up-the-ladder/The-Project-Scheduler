@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
+  <head>
+    <title>Critical Path Analysis</title>
+    <style>
+      html {
+        background-image: linear-gradient(to top left, #0e9fe2, #ffffff);
+      }
+      body {
+        font-family: Arial, sans-serif;
+        height: 630px;
+        width: 100%;
+      }
+      .navmain {
+        margin-top: 1%;
+      }
+      .nav-bar {
+        font-size: 2.5em;
+        color: rgb(0, 0, 0);
+        text-align: left;
+        font-family: "Sofia", sans-serif;
+        margin-left: 2%;
+      }
+      h1 {
+        float: left;
+        display: inline-block;
+        font-family: "Sofia", sans-serif;
+        margin-left: 2%;
+      }
+      ul {
+        list-style-type: none;
+        margin: 25px;
+        float: right;
+      }
+
+      ul li {
+        display: inline-block;
+      }
+
+      ul li a {
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+        color: #fff;
+        padding: 5px 20px;
+        border: 1px solid transparent;
+        transition: 0.6s ease;
+      }
+
+      ul li a:hover {
+        background-color: #fff;
+        color: #000;
+      }
+
+      ul li.active a {
+        background-color: #fff;
+        color: #000;
+      }
+      .main {
+        max-width: 1200px;
+        background-color: #fff;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        color: #555;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      table {
+        margin: auto;
+        border-collapse: collapse;
+        width: 80%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #444;
+      }
+
+      .critical {
+        background-color: #ffc9c9;
+        font-weight: bold;
+      }
+
+      /* Responsive styles */
+      @media only screen and (max-width: 768px) {
+        table {
+          width: 100%;
+        }
+      }
+
+      @media only screen and (max-width: 480px) {
+        h1 {
+          font-size: 28px;
+        }
+        th,
+        td {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="navmain">Project Scheduling Monitor</h1>
+      <nav>
+        <ul>
+          <li id="home"><a href="index1.html">Home</a></li>
+          <li id="project"><a href="newproject.html">Project</a></li>
+          <li id="visulaization"><a href="gantt.html">Gantt Chart</a></li>
+          <li id="visulaization"><a href="pert.html">PERT</a></li>
+          <li id="visulaization" class="active"><a href="cpm.html">CPM</a></li>
+          <li id="contactus"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <h1>Critical Path Analysis</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Duration (days)</th>
+          <th>Predecessors</th>
+          <th>Early Start (days)</th>
+          <th>Early Finish (days)</th>
+          <th>Late Start (days)</th>
+          <th>Late Finish (days)</th>
+          <th>Slack (days)</th>
+          <th>Critical?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>5</td>
+          <td></td>
+          <td>0</td>
+          <td>5</td>
+          <td>10</td>
+          <td>15</td>
+          <td>10</td>
+          <td class="critical">Yes</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>3</td>
+          <td>A</td>
+          <td>5</td>
+          <td>8</td>
+          <td>13</td>
+          <td>16</td>
+          <td>8</td>
+          <td class="critical">Yes</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>4</td>
+          <td>A</td>
+          <td>5</td>
+          <td>9</td>
+          <td>13</td>
+          <td>17</td>
+          <td>8</td>
+          <td class="critical">Yes</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>6</td>
+          <td>B, C</td>
+          <td>8</td>
+          <td>14</td>
+          <td>11</td>
+          <td>17</td>
+          <td>3</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>E</td>
+          <td>2</td>
+          <td>C</td>
+          <td>9</td>
+          <td>11</td>
+          <td>15</td>
+          <td>17</td>
+          <td>6</td>
+          <td class="critical">Yes</td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td>4</td>
+          <td>B</td>
+          <td>8</td>
+          <td>12</td>
+          <td>16</td>
+          <td>20</td>
+          <td>8</td>
+          <td class="critical">Yes</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      // Calculate critical path
+      const table = document.querySelector("table");
+      const rows = table.querySelectorAll("tbody tr");
+      let maxDuration = 0;
+
+      // Set initial values for each activity
+      rows.forEach((row) => {
+        const duration = parseInt(row.children[1].textContent);
+        const predecessors = row.children[2].textContent.split(", ");
+
+        // Calculate early start and early finish
+        let earlyStart = 0;
+        if (predecessors[0]) {
+          let maxPredecessorFinish = 0;
+          predecessors.forEach((predecessor) => {
+            const predecessorRow = [...rows].find(
+              (row) => row.children[0].textContent === predecessor
+            );
+            const predecessorFinish = parseInt(
+              predecessorRow.children[4].textContent
+            );
+            if (predecessorFinish > maxPredecessorFinish) {
+              maxPredecessorFinish = predecessorFinish;
+            }
+          });
+          earlyStart = maxPredecessorFinish;
+        }
+        row.children[3].textContent = earlyStart;
+        row.children[4].textContent = earlyStart + duration;
+
+        // Calculate late start and late finish
+        let lateFinish = maxDuration;
+        if (row.children[7].textContent === "0") {
+          let minSuccessorStart = Infinity;
+          rows.forEach((successorRow) => {
+            const successor = successorRow.children[2].textContent.split(", ");
+            if (successor.includes(row.children[0].textContent)) {
+              const successorStart = parseInt(
+                successorRow.children[3].textContent
+              );
+              if (successorStart < minSuccessorStart) {
+                minSuccessorStart = successorStart;
+              }
+            }
+          });
+          lateFinish = minSuccessorStart;
+        }
+        row.children[6].textContent = lateFinish;
+        row.children[5].textContent = lateFinish - duration;
+
+        // Calculate slack and set critical
+        const slack = lateFinish - (earlyStart + duration);
+        row.children[7].textContent = slack;
+        if (slack === 0) {
+          row.children[8].classList.add("critical");
+        }
+
+        // Update maxDuration
+        const finish = parseInt(row.children[4].textContent);
+        if (finish > maxDuration) {
+          maxDuration = finish;
+        }
+      });
+    </script>
+  </body>
+</html>

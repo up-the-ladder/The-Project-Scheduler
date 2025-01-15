@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css"
+    />
+    <link rel="stylesheet" href="style/gant.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+    <title>Gantt Chart</title>
+  </head>
+  <body>
+    <div class="logo">
+      <h1 class="animate__animated animate__bounceIn heading"><em> Project Scheduling Monitor</em></h1>
+      <nav>
+        <ul>
+          <li id="home"><a href="index1.html">Home</a></li>
+          <li id="project"><a href="newproject.html">Project</a></li>
+          <li id="visulaization" class="active"><a href="gantt.html">Gantt Chart</a></li>
+          <li id="visulaization"><a href="pert.html">PERT</a></li>
+          <li id="visulaization"><a href="cpm.html">CPM</a></li>
+          <li id="contactus"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+      <br />
+    </div>
+    <form>
+      <br><br><br><br>
+      <label for="task-name">Task Name:</label>
+      <input type="text" id="task-name" />
+
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" />
+
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" />
+
+      <input type="button" value="Add Task" onclick="addTask()" />
+    </form>
+    <div id="gantt_here" style="width: 100%; height: 500px"></div>
+    <script>
+      gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+      gantt.init("gantt_here");
+    </script>
+    <script>
+      function addTask() {
+        var taskName = document.getElementById("task-name").value;
+        var startDate = document.getElementById("start-date").value;
+        var endDate = document.getElementById("end-date").value;
+
+        var task = {
+          id: gantt.getTaskCount() + 1,
+          text: taskName,
+          start_date: startDate + " 00:00:00",
+          end_date: endDate + " 23:59:59",
+          duration:10,
+        };
+
+        gantt.addTask(task);
+      }
+    </script>
+  </body>
+</html>

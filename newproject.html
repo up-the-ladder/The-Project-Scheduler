@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Management Site</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <style>
+      body {
+        background-image: linear-gradient(to top left, #fefeff, #2d3ac7);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+      }
+
+      .container {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(to bottom right, #89cafb, #82f4c1);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 60px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 1%;
+        display: inline-block;
+        font-family: "Sofia", sans-serif;
+      }
+      nav {
+        display: inline-block;
+        float: right;
+      }
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        margin-top: 10px;
+      }
+
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #f2f2f2;
+        transition: background-color 0.3s ease;
+      }
+
+      input:focus,
+      button:focus {
+        background-color: #e0e0e0;
+      }
+
+      button {
+        margin-top: 40px;
+        background-image: linear-gradient(to bottom right, #4caf65, #45a247);
+        color: #fff;
+        cursor: pointer;
+        transition: background-image 0.3s ease;
+      }
+
+      button:hover {
+        background-image: linear-gradient(to bottom right, #45a247, #3e893e);
+      }
+
+      button:active {
+        background-image: linear-gradient(to bottom right, #3e893e, #367c36);
+        transform: scale(0.95);
+      }
+      ul {
+        list-style-type: none;
+        margin: 25px;
+        text-align: center;
+      }
+
+      ul li {
+        display: inline-block;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: #fff;
+        padding: 5px 20px;
+        border: 1px solid transparent;
+        transition: 0.6s ease;
+      }
+
+      ul li a:hover {
+        background-color: #fff;
+        color: #000;
+      }
+
+      ul li.active a {
+        background-color: #fff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+      <h1><em> Project Scheduling Monitor</em></h1>
+      <nav>
+        <ul>
+          <li id="home"><a href="index1.html">Home</a></li>
+          <li id="project" class="active">
+            <a href="newproject.html">Project</a>
+          </li>
+          <li id="visulaization"><a href="gantt.html">Gantt Chart</a></li>
+          <li id="visulaization"><a href="pert.html">PERT</a></li>
+          <li id="visulaization"><a href="cpm.html">CPM</a></li>
+          <li id="contactus"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+      <h1>Projects</h1>
+      <form>
+        <label for="projectName">Project Name</label>
+        <input type="text" id="projectName" name="projectName" />
+
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" />
+
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate" />
+
+        <button type="submit">Create Project</button>
+      </form>
+    </div>
+  </body>
+</html>
