@@ -1,0 +1,47 @@
+body{
+    background-image: linear-gradient(to top left, #8bbff7, #ced6e0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.nav-bar{
+
+    font-size: 2.5em;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    font-family: "Sofia" , sans-serif;
+    margin-left: 2%;
+}
+h1{
+    float: left;
+    display: inline-block;
+    font-family: "Sofia" , sans-serif;
+    margin-left: 2%;
+}
+ul {
+    list-style-type: none;
+    margin: 25px;
+    float: right;
+  }
+  
+  ul li {
+    display: inline-block;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+  }
+  
+  ul li a:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  ul li.active a {
+    background-color: #fff;
+    color: #000;
+  }

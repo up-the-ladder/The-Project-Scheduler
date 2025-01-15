@@ -1,0 +1,102 @@
+
+html ,body{
+    background-image: linear-gradient(to top left,#0ee283, #c1dafb);
+    height: 100%;
+    width: 100%;
+}
+.nav-bar{
+
+    font-size: 2.5em;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    font-family: "Sofia" , sans-serif;
+    margin-left: 2%;
+}
+h1{
+    float: left;
+    display: inline-block;
+    font-family: "Sofia" , sans-serif;
+    margin-left: 2%;
+}
+ul {
+    list-style-type: none;
+    margin: 25px;
+    float: right;
+  }
+  
+  ul li {
+    display: inline-block;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+  }
+  
+  ul li a:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  ul li.active a {
+    background-color: #fff;
+    color: #000;
+  }
+  .main {
+    max-width: 1200px;
+    background-color: #fff;
+  }
+  
+  .container-section {
+    margin-top: 5%;
+    display:inline-block;
+    justify-content: center;
+  }
+  
+  .contact-form {
+    max-width: 800px;
+    margin-top: 0;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+  
+  .contact-form-text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    border: 0;
+    background: #111;
+    padding: 20px 40px;
+    outline: none;
+    color: #ddd;
+    transition: 0.5s;
+  }
+  
+  .contact-form-text:hover {
+    box-shadow: 0 0 10px 4px #34495e;
+  }
+  
+  textarea.contact-form-text {
+    resize: none;
+    height: 120px;
+    width: 600px;
+  }
+  
+  .contact-form-btn {
+    border: 0;
+    background: #34495e;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .contact-form-btn:hover {
+    background: #b6e2ff;
+  }
+  
